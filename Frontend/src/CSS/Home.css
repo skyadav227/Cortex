@@ -1,0 +1,68 @@
+.cortex-container {
+  height: 100dvh;
+  display: flex;
+  overflow: hidden;
+  display: flex;
+}
+
+.cortex-container.dark {
+  background: #0d0f12;
+}
+
+.cortex-container.light {
+  background: #f4f4f5;
+}
+
+.dark .sidebar {
+  background: #14171a;
+}
+
+.light .sidebar {
+  background: white;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 0, 0.06);
+  overflow: auto;
+}
+
+.chat-area {
+  flex: 1;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px),
+(orientation: landscape) and (max-height: 500px) {
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100dvh;
+    z-index: 1002;
+    transition: left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    backdrop-filter: blur(3px);
+    animation: fade .25s;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+}

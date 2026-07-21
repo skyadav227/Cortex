@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.landing {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #09090b, #111827, #1e1b4b, #09090b);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: white;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: .45;
+    animation: starsMove 3s linear infinite;
+}
+
+.blur {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: .35;
+    animation: floatBlob 10s ease-in-out infinite;
+}
+
+.blur1 {
+    width: 350px;
+    height: 350px;
+    background: #6366f1;
+    top: -80px;
+    left: -80px;
+}
+
+.blur2 {
+    width: 400px;
+    height: 400px;
+    background: #9333ea;
+    bottom: -120px;
+    right: -120px;
+}
+
+.hero {
+    max-width: 850px;
+    text-align: center;
+    z-index: 2;
+    animation: fadeUp 1s ease;
+}
+
+.hero h1 {
+    font-size: 7rem;
+    font-weight: 900;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ffffff, #9ea5ff, #ffffff);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 3s infinite;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #b4b4b4;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.hero button {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 38px;
+    border: none;
+    border-radius: 50px;
+    background: #6366f1;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.hero button:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 0 15px #6366f1,
+        0 0 35px rgba(99, 102, 241, .45);
+}
+
+.features {
+    margin-top: 90px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+}
+
+.feature-card {
+    width: 290px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(15px);
+    transition: .35s;
+}
+
+.feature-card:nth-child(1) {
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.feature-card:nth-child(2) {
+    animation: floatCard 4s ease-in-out infinite .5s;
+}
+
+.feature-card:nth-child(3) {
+    animation: floatCard 4s ease-in-out infinite 1s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: #6366f1;
+    box-shadow: 0 15px 35px rgba(99, 102, 241, .25);
+}
+
+.feature-card span {
+    font-size: 40px;
+}
+
+.feature-card h3 {
+    margin: 20px 0 10px;
+}
+
+.feature-card p {
+    color: #a8a8a8;
+    line-height: 1.7;
+}
+
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px #6366f1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 25px #8b5cf6);
+    }
+}
+
+@keyframes floatBlob {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(35px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes starsMove {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 -40px;
+    }
+}
+
+
+.why {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    margin-top: 140px;
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+}
+
+.why-left {
+    flex: 1;
+}
+
+.why-left h2 {
+    font-size: 2.7rem;
+    margin-bottom: 20px;
+}
+
+.why-left p {
+    color: #b4b4b4;
+    line-height: 1.9;
+    font-size: 1.05rem;
+}
+
+.why-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.why-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .3s;
+}
+
+.why-item:hover {
+    transform: translateY(-5px);
+    border-color: #6366f1;
+}
+
+.steps {
+    margin-top: 150px;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+}
+
+.steps h2 {
+    font-size: 2.7rem;
+    margin-bottom: 60px;
+}
+
+.step-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    width: 300px;
+    padding: 30px;
+    background: rgba(255, 255, 255, .05);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .3s;
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+}
+
+.step-card span {
+    font-size: 55px;
+}
+
+.step-card h3 {
+    margin: 20px 0 15px;
+}
+
+.step-card p {
+    color: #a8a8a8;
+}
+
+.tech {
+    margin-top: 150px;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+}
+
+.tech h2 {
+    font-size: 2.7rem;
+    margin-bottom: 50px;
+}
+
+.tech-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.tech-card {
+    width: 180px;
+    padding: 24px;
+    background: rgba(255, 255, 255, .05);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .3s;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tech-card:hover {
+    transform: translateY(-6px);
+    border-color: #6366f1;
+}
+
+.footer {
+    margin-top: 160px;
+    padding: 60px 20px;
+    text-align: center;
+    color: #b4b4b4;
+    width: 100%;
+    z-index: 2;
+}
+
+.footer h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    margin-bottom: 18px;
+}
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin: 30px 0;
+}
+
+.social-links a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    font-size: 22px;
+    color: white;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: #6366f1;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, .4);
+}
+
+.cta {
+    margin-top: 150px;
+    text-align: center;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.cta h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    color: #b4b4b4;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.cta button {
+    padding: 16px 38px;
+    border: none;
+    border-radius: 50px;
+    background: #6366f1;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.cta button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, .35);
+}
+
+.login-link {
+    margin-top: 18px;
+    color: #9ea5ff;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-link:hover {
+    color: white;
+}
+
+.scroll-down {
+    margin-top: 45px;
+    font-size: 16px;
+    color: #b4b4b4;
+    animation: bounce 1.8s infinite;
+    letter-spacing: 1px;
+}
+
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+
+}
+
+
+@media(max-width:768px) {
+
+    .hero h1 {
+        font-size: 4rem;
+        letter-spacing: 5px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .features {
+        margin-top: 60px;
+    }
+
+    .why {
+        flex-direction: column;
+        text-align: center;
+
+    }
+
+    .why-right {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .steps h2,
+    .tech h2,
+    .why-left h2 {
+        font-size: 2rem;
+    }
+
+    .footer {
+        padding: 40px 20px;
+    }
+}
