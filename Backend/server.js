@@ -19,6 +19,10 @@ app.use(cors({
 
 app.use(express.json())
 
+app.get("/", (req, res) => {
+  res.send("cortex backend is running.......")
+})
+
 app.use("/auth", authRoutes)
 
 app.use("/chats", chatRoutes)
