@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion"
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Landingpage from './Pages/Landingpage'
-import ProtectedRoute from './Components/protectedRoute'
+import ProtectedRoute from './Components/ProtectedRoute'
 import { Toaster } from 'sonner'
 
 export default function App() {
