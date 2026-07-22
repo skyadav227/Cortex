@@ -19,10 +19,6 @@ app.use(cors({
 
 app.use(express.json())
 
-app.get("/", (req, res) => {
-  res.send("cortex backend is running.......")
-})
-
 app.use("/auth", authRoutes)
 
 app.use("/chats", chatRoutes)
@@ -31,9 +27,8 @@ app.use("/api/ai", aiRoutes)
 
 const startServer = async () => {
   await connectDB()
-  app.listen(process.env.PORT, "0.0.0.0", () => {
-  }) 
-}
+  app.listen(process.env.PORT, "0.0.0.0") 
+} 
 
 startServer()
 
