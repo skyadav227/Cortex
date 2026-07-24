@@ -248,7 +248,7 @@ export default function Sidebar({
                 Designed & developed by Karthik.
               </p>
 
-              <div className="about-links">
+              <div className="https://portfolio-kappa-three-61.vercel.app/">
                 <a href="" target="_blank" rel="noreferrer">
                   <FiGlobe />
                   Portfolio
