@@ -11,10 +11,10 @@ export const chatWithAI = async (req, res) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat",
+          model: "openrouter/free",
           messages,
           max_tokens: 2000,
-          temperature: 0.6 
+          temperature: 0.6,
         }),
       }
     );
@@ -22,6 +22,7 @@ export const chatWithAI = async (req, res) => {
     const data = await response.json();
 
     if (!response.ok) {
+      console.error("OpenRouter chat error:", data);
       return res.status(response.status).json({
         message: data.error?.message || "OpenRouter Error",
       });
@@ -30,7 +31,6 @@ export const chatWithAI = async (req, res) => {
     res.status(200).json({
       reply: data.choices[0].message.content,
     });
-
   } catch (error) {
     console.error(error);
 
@@ -65,7 +65,7 @@ User message: ${firstMessage}
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat",
+          model: "openrouter/free",
           messages: [
             {
               role: "user",
@@ -80,15 +80,15 @@ User message: ${firstMessage}
     const data = await response.json();
 
     if (!response.ok) {
+      console.error("OpenRouter title error:", data);
       return res.status(response.status).json({
         message: data.error?.message || "OpenRouter Error",
       });
     }
 
     res.status(200).json({
-      title: data.choices[0].message.content,
+      title: data.choices[0].message.content.trim(),
     });
-
   } catch (error) {
     console.error(error);
 
