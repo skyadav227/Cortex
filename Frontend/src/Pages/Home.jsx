@@ -173,29 +173,34 @@ export default function Home() {
         text
       });
 
-      if (isNewChat) {
-        const aiTitle = await getAITitle(cleanText);
+if (isNewChat) {
+  try {
+    const aiTitle = await getAITitle(cleanText);
 
-        const cleanTitle = aiTitle
-          .replace(/^Title:\s*/i, "")
-          .replace(/^["']|["']$/g, "")
-          .replace(/\.$/, "")
-          .trim();
+    const cleanTitle = aiTitle
+      .replace(/^Title:\s*/i, "")
+      .replace(/^["'“”]+|["'“”]+$/g, "")
+      .replace(/[.!?]+$/g, "")
+      .trim();
 
-        await updateTitle(currentChatId, cleanTitle)
+    if (cleanTitle) {
+      await updateTitle(currentChatId, cleanTitle);
 
-        setChatHistory(prev =>
-          prev.map(chat =>
-            chat.id === currentChatId
-              ? {
+      setChatHistory(prev =>
+        prev.map(chat =>
+          chat.id === currentChatId
+            ? {
                 ...chat,
                 title: cleanTitle
               }
-              : chat
-          )
-        );
-
-      }
+            : chat
+        )
+      );
+    }
+  } catch (error) {
+    console.error("Chat title generation failed:", error);
+  }
+}
 
       const aiReply = await getAIResponse(conversation);
 
