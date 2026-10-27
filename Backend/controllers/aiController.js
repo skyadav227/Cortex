@@ -40,9 +40,17 @@ export const chatWithAI = async (req, res) => {
   }
 };
 
+
+
 export const generateTitle = async (req, res) => {
   try {
     const { firstMessage } = req.body;
+
+    if (!firstMessage || typeof firstMessage !== "string") {
+      return res.status(400).json({
+        message: "A valid first message is required.",
+      });
+    }
 
     const prompt = `
 Generate a short chat title.
@@ -72,7 +80,7 @@ User message: ${firstMessage}
               content: prompt,
             },
           ],
-          max_tokens: 20,
+          max_tokens: 40,
         }),
       }
     );
@@ -81,18 +89,28 @@ User message: ${firstMessage}
 
     if (!response.ok) {
       console.error("OpenRouter title error:", data);
+
       return res.status(response.status).json({
         message: data.error?.message || "OpenRouter Error",
       });
     }
 
-    res.status(200).json({
-      title: data.choices[0].message.content.trim(),
+    const generatedTitle = data.choices?.[0]?.message?.content;
+
+    // A free model may return an empty or null content field.
+    // Use the original message as a safe fallback.
+    const title =
+      typeof generatedTitle === "string" && generatedTitle.trim()
+        ? generatedTitle.trim().replace(/^["']|["']$/g, "")
+        : firstMessage.trim().split(/\s+/).slice(0, 5).join(" ");
+
+    return res.status(200).json({
+      title: title || "New Chat",
     });
   } catch (error) {
-    console.error(error);
+    console.error("Title generation error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       message: "Something went wrong.",
     });
   }
